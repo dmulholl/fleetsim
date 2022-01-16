@@ -20,7 +20,7 @@ NB &mdash; I'm assuming that the binaries will be built and run on a *unixy* sys
 
 
 
-### Overview
+## Overview
 
 All communication happens via UDP packets.
 
@@ -52,7 +52,7 @@ runs before the server its request packet will be lost in the ether.)
 
 
 
-### The Fleet State Server
+## The Fleet State Server
 
 The server monitors the state of the fleet, listening for incoming location packets from vehicles
 and sending updates to clients.
@@ -83,7 +83,7 @@ the client.
 
 
 
-### The Vehicle Simulator
+## The Vehicle Simulator
 
 The simulator runs each simulated vehicle in its own goroutine.
 
@@ -111,7 +111,7 @@ data!
 
 
 
-### The Client
+## The Client
 
 A client subscribes to a feed of updates about a specific vehicle.
 
