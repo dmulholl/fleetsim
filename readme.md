@@ -44,7 +44,7 @@ All communication happens via UDP packets.
   be run on three separate machines &mdash; you'd just need to specify the IP addresses on the
   command line. (I haven't actually tested this though!)
 
-Each binary is intended to be run in its own command line window as they print their output to stdout.
+Each binary is intended to be run in its own terminal window as they print their output to stdout.
 
 You can shut down a binary by hitting `Ctrl-C`. In general the binaries can be started and stopped in
 any order. (Do note that the client currently sends a single subscription request so if the client
