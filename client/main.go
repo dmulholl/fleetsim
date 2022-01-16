@@ -49,7 +49,7 @@ func main() {
 	var remotePort string
 	flag.StringVar(&remotePort, "server-port", "8000", "Port number for server.")
 
-	// This is the VIN of the target vehicle.
+	// This is the VIN of the target vehicle the client will subscribe to.
 	var vin string
 	flag.StringVar(&vin, "vin", "1HGBH41JXMN000000", "VIN of target vehicle.")
 

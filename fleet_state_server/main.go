@@ -76,9 +76,8 @@ func runServer(host string, port string) {
 	if err != nil {
 		fmt.Fprintf(
 			os.Stderr,
-			"Error: unable to initialize listener on address '%s:%s'.\n  -->  %s\n",
-			host,
-			port,
+			"Error: unable to initialize listener on '%s'.\n  -->  %s\n",
+			serverAddr,
 			err.Error())
 		os.Exit(1)
 	}
@@ -208,6 +207,7 @@ func sendSubscriberUpdate(subscribers []*net.UDPAddr, locations []location, vin 
 		duration := loc2.timestamp.Sub(loc1.timestamp).Seconds()
 
 		// Only try calculating the speed if the gap between the timestamps is less than 2 seconds.
+		// (2 seconds is an arbitrary value -- in real code this would be a parameter we could tune.)
 		if duration < 2.0 {
 			distance := getDistance(loc1.latitude, loc1.longitude, loc2.latitude, loc2.longitude)
 			speed = distance / duration

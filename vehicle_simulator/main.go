@@ -71,7 +71,7 @@ func runSimulator(host string, port string, numVehicles int) {
 		go simulateVehicle(serverAddr, i)
 	}
 
-	// Give the vehicles time to start up.
+	// Give the vehicles time to start up and print their VINs.
 	time.Sleep(time.Millisecond * 500)
 	fmt.Println("-------------------------")
 	fmt.Println("Ctrl-C to end simulation.")
@@ -105,7 +105,7 @@ func simulateVehicle(serverAddr *net.UDPAddr, serialNumber int) {
 	// We select a random speed in the range [0, 28.0).
 	speed := rand.Float64() * 28.0
 
-	// The vehicles initial direction. This is an angle in radians randomly selected from the
+	// The vehicle's initial direction. This is an angle in radians randomly selected from the
 	// interval [0, 2 * pi). The angle is measured anticlockwise from the reference direction
 	// which is due east.
 	direction := rand.Float64() * 2 * math.Pi
