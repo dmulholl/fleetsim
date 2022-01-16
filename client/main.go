@@ -24,7 +24,7 @@ Options:
   --server-port <int>       Port number of the fleet server.
                             Default: 8000.
   --vin <string>            VIN of the target vehicle to subscribe to.
-                            Default: 1HGBH41JXMN000000
+                            Default: "1HGBH41JXMN000000".
 
 Flags:
   -h, --help                Print this help text and exit.
@@ -184,6 +184,7 @@ func handlePacket(message string) {
 
     timeString := timestamp.Format(time.RFC3339)
 
+    // A speed value of -1.0 means the speed is not available.
     if speed == -1.0 {
         fmt.Printf("[%s]  (%.6f, %.6f)  N/A\n", timeString, latitude, longitude)
     } else {

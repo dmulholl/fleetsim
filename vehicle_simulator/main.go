@@ -71,13 +71,19 @@ func runSimulator(host string, port string, numVehicles int) {
         go simulateVehicle(serverAddr, i)
     }
 
+    // Give the vehicles time to start up.
+    time.Sleep(time.Millisecond * 500)
+    fmt.Println("-------------------------")
+    fmt.Println("Ctrl-C to end simulation.")
+    fmt.Println("-------------------------")
+
     // Block until the user hits Ctrl-C.
     c := make(chan os.Signal, 1)
     signal.Notify(c, os.Interrupt)
     _ = <-c
 
     fmt.Println("\n-------------------------")
-    fmt.Println("Shutting down....")
+    fmt.Println("Shutting down.")
     fmt.Println("-------------------------")
 }
 
