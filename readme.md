@@ -131,7 +131,7 @@ A client subscribes to a feed of updates about a specific vehicle.
       --server-port <int>       Port number of the fleet server.
                                 Default: 8000.
       --vin <string>            VIN of the target vehicle to subscribe to.
-                                Default: 1HGBH41JXMN000000
+                                Default: "1HGBH41JXMN000000".
 
     Flags:
       -h, --help                Print this help text and exit.
@@ -141,7 +141,7 @@ If omitted, it defaults to the vehicle with the VIN `1HGBH41JXMN000000`, which i
 vehicle launched by the simulator.
 
 If you want to run multiple clients simultaneously you'll need to use the `--client-port <int>`
-option to specify a different port number for each one to listen on.
+option to specify a unique port number for each one to listen on.
 
 Limitation &mdash; the client currently sends a single subscription request packet to the server.
 If this gets lost, the client will never receive any updates. It should really send subscription
