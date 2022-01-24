@@ -176,12 +176,20 @@ func handleVehiclePacket(message string, fleet map[string][]location, subscriber
 		return
 	}
 
-	entry := location{timestamp: timestamp, latitude: latitude, longitude: longitude}
+	// This is the new entry for the vehicle's stored list of [location] structs.
+	new_entry := location{timestamp: timestamp, latitude: latitude, longitude: longitude}
 
-	if _, ok := fleet[vin]; ok {
-		fleet[vin] = append(fleet[vin], entry)
+	// We only add the new entry to the list if its timestamp is newer than the last entry, i.e.
+	// we simply discard out-of-order packets.
+	if entry_list, found := fleet[vin]; found {
+		last_entry := entry_list[len(entry_list)-1]
+		if new_entry.timestamp.After(last_entry.timestamp) {
+			fleet[vin] = append(entry_list, new_entry)
+		} else {
+			return
+		}
 	} else {
-		fleet[vin] = []location{entry}
+		fleet[vin] = []location{new_entry}
 	}
 
 	// If one or more clients have subscribed to updates about this particular vehicle, send
