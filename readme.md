@@ -73,7 +73,7 @@ and sending updates to clients.
       -h, --help                Print this help text and exit.
       --verbose                 Print a log of all incoming packets.
 
-The server defaults to listening on port `8000`. You may need to specify a different port if this
+The server defaults to listening on port `8000`. You may need to specify a different port number if this
 port is already in use on your machine.
 
 Limitation &mdash; once a client has subscribed to a stream of updates, the server sends an endless
